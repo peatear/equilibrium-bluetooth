@@ -1,0 +1,96 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="equilibrium.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- LOCALIZATION NOTE:
+            To localize the displayed strings copy their values to appropriately named
+            keys in the app's neutral language resource file (AppResources.resx) then
+            replace the hard-coded text value between the attributes' quotation marks
+            with the binding clause whose path points to that string name.
+
+            For example:
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            This binding points to the template's string resource named "ApplicationTitle".
+
+            Adding supported languages in the Project Properties tab will create a
+            new resx file per language that can carry the translated values of your
+            UI strings. The binding in these examples will cause the value of the
+            attributes to be drawn from the .resx file that matches the
+            CurrentUICulture of the app at run time.
+         -->
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28"/>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="14,0,10,0">
+            <TextBlock HorizontalAlignment="Left" Margin="34,102,0,0" TextWrapping="Wrap" Text="roll" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="18,134,0,0" TextWrapping="Wrap" Text="pitch" VerticalAlignment="Top" RenderTransformOrigin="0.45,0.804"/>
+            <TextBlock HorizontalAlignment="Left" Margin="28,166,0,0" TextWrapping="Wrap" Text="yaw" VerticalAlignment="Top"/>
+            <TextBlock x:Name="rollTextBlock" HorizontalAlignment="Left" Margin="92,102,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock x:Name="pitchTextBlock" HorizontalAlignment="Left" Margin="92,134,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.296"/>
+            <TextBlock x:Name="yawTextBlock" HorizontalAlignment="Left" Margin="92,166,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="249,80,0,0" TextWrapping="Wrap" Text="motor 0" VerticalAlignment="Top"/>
+            <TextBlock x:Name="motor0" HorizontalAlignment="Left" Margin="341,80,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <Button x:Name="ConnectAppToDeviceButton" Content="Button" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Click="ConnectAppToDeviceButton_Click"/>
+            <TextBox x:Name="DeviceName" HorizontalAlignment="Left" Height="72" Margin="144,0,0,0" TextWrapping="Wrap" Text="linvor" VerticalAlignment="Top" Width="279"/>
+            <Button Content="Run" HorizontalAlignment="Left" Margin="0,498,0,0" VerticalAlignment="Top" Click="Button_Click" Width="130"/>
+            <TextBlock HorizontalAlignment="Left" Margin="249,112,0,0" TextWrapping="Wrap" Text="motor 1" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="249,144,0,0" TextWrapping="Wrap" Text="motor 2" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="249,176,0,0" TextWrapping="Wrap" Text="motor 3" VerticalAlignment="Top"/>
+            <TextBlock x:Name="motor2" HorizontalAlignment="Left" Margin="341,144,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock x:Name="motor1" HorizontalAlignment="Left" Margin="341,112,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock x:Name="motor3" HorizontalAlignment="Left" Margin="341,176,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <Slider x:Name="throttleSlider" HorizontalAlignment="Left" Margin="231,317,-36,0" VerticalAlignment="Top" Width="261" RenderTransformOrigin="0.5,0.5" Height="95" UseLayoutRounding="False" d:LayoutRounding="Auto" ValueChanged="throttleSlider_ValueChanged" Maximum="700">
+                <Slider.RenderTransform>
+                    <CompositeTransform Rotation="-90"/>
+                </Slider.RenderTransform>
+            </Slider>
+            <Slider x:Name="timedThrottle" HorizontalAlignment="Left" Margin="-51,321,0,0" VerticalAlignment="Top" Width="259" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Maximum="500" ValueChanged="timedThrottle_ValueChanged">
+                <Slider.RenderTransform>
+                    <CompositeTransform Rotation="-90"/>
+                </Slider.RenderTransform>
+            </Slider>
+            <Button Content="update gain" HorizontalAlignment="Left" Margin="249,498,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+            <TextBox x:Name="pGain" HorizontalAlignment="Left" Height="72" Margin="195,239,0,0" TextWrapping="Wrap" Text="0.1" VerticalAlignment="Top" Width="77"/>
+            <TextBox x:Name="iGain" HorizontalAlignment="Left" Height="72" Margin="195,316,0,0" TextWrapping="Wrap" Text="0.1" VerticalAlignment="Top" Width="77"/>
+            <TextBox x:Name="dGain" HorizontalAlignment="Left" Height="72" Margin="195,388,0,0" TextWrapping="Wrap" Text="0.1" VerticalAlignment="Top" Width="77"/>
+            <TextBlock HorizontalAlignment="Left" Margin="163,264,0,0" TextWrapping="Wrap" Text="P" VerticalAlignment="Top" Width="27"/>
+            <TextBlock HorizontalAlignment="Left" Margin="163,341,0,0" TextWrapping="Wrap" Text="I" VerticalAlignment="Top" Width="27"/>
+            <TextBlock HorizontalAlignment="Left" Margin="163,413,0,0" TextWrapping="Wrap" Text="D" VerticalAlignment="Top" Width="27"/>
+            <Button x:Name="ConnectAppToAppButton" Content="Button" HorizontalAlignment="Left" Margin="10,616,0,0" VerticalAlignment="Top" Click="ConnectAppToAppButton_Click"/>
+            <TextBox x:Name="WindowsPhoneName" HorizontalAlignment="Left" Height="72" Margin="144,614,0,0" TextWrapping="Wrap" Text="Windows Phone" VerticalAlignment="Top" Width="279"/>
+            <TextBlock x:Name="throttleText" HorizontalAlignment="Left" Margin="144,570,0,0" TextWrapping="Wrap" Text="Throttle: " VerticalAlignment="Top" Width="251" Height="58"/>
+
+        </Grid>
+
+        <!--Uncomment to see an alignment grid to help ensure your controls are
+            aligned on common boundaries.  The image has a top margin of -32px to
+            account for the System Tray. Set this to 0 (or remove the margin altogether)
+            if the System Tray is hidden.
+
+            Before shipping remove this XAML and the image itself.-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+    </Grid>
+
+</phone:PhoneApplicationPage>
